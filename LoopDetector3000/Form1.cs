@@ -31,11 +31,14 @@ namespace LoopDetector3000
             Node n2 = new Node(2, n3);
             Node n1 = new Node(1, n2);
 
-            List<Node> nodes = n1.ListNodes();
-            for (int i = 0; i < nodes.Count; i++)
-            {
-                richTextBox1.Text += Environment.NewLine + nodes[i]; 
-            }
+            //The loop
+            n10.next = n1;
+
+            //List<Node> nodes = n1.ListNodes();
+            //for (int i = 0; i < nodes.Count; i++)
+            //{
+            //    richTextBox1.Text += Environment.NewLine + nodes[i]; 
+            //}
 
             if ( n1.hasLoop() )
             {

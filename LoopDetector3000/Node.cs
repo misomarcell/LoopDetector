@@ -10,7 +10,7 @@ namespace LoopDetector3000
     class Node
     {
         private int Data { get; set; }
-        private Node next { get; set; }
+        public Node next { get; set; }
 
         public Node(int data, Node next)
         {
@@ -44,15 +44,21 @@ namespace LoopDetector3000
             Node slow = this;
             Node fast = next;
 
-            while ( slow != null || fast.next != null )
+            while ( slow.next != null || fast.next != null )
             {
+
+                slow = slow.next;
+                if (fast.next.next != null)
+                {
+                    fast = fast.next.next;
+                }
+
                 if (slow == fast)
                 {
                     return true;
                 }
 
-                slow = slow.next;
-                fast = fast.next.next;
+                return false;  
             }
 
             return false;
